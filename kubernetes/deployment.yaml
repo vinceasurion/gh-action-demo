@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: demo
+  labels:
+    app: llauderes-rest-api
+  name: llauderes-rest-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: llauderes-rest-api
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: llauderes-rest-api
+    spec:
+      containers:
+        - image: llauderes-rest-api:1.0
+          imagePullPolicy: Never
+          name: llauderes-rest-api
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "0.5"
+          ports:
+            - containerPort: 8081
+
+status: {}

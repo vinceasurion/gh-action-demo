@@ -1,0 +1,140 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Book Store Listing API",
+    "version": "1.0.0",
+    "description": "API documentation for the Book Store Listing application"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Local server"
+    },
+    {
+      "url": "https://api.books.com",
+      "description": "Development server"
+    }
+  ],
+  "tags": [{ "name": "Books", "description": "Everything about books" }],
+  "paths": {
+    "/api/v1/books": {
+      "get": {
+        "tags": ["Books"],
+        "summary": "Get a list of books",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                },
+                "example": [
+                  {
+                    "id": 1,
+                    "title": "The Subtle Art of Not Giving a F*ck",
+                    "author": "Mark Manson",
+                    "isbn": 9780062457714,
+                    "rating": 4.6,
+                    "category": "self-help"
+                  },
+                  {
+                    "id": 2,
+                    "title": "The Power of Habit",
+                    "author": "Charles Duhigg",
+                    "isbn": 9780812981605,
+                    "rating": 4.6,
+                    "category": "self-help"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Books"],
+        "summary": "Add a new books",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BooksInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Books"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BooksInput": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "isbn": {
+            "type": "number"
+          },
+          "rating": {
+            "type": "number"
+          },
+          "category": {
+            "type": "string"
+          }
+        },
+        "required": ["title", "author", "isbn", "rating", "category"],
+        "example": {
+          "title": "Daily Stoic",
+          "author": "Ryan Holiday",
+          "isbn": 12345678910,
+          "rating": 4.5,
+          "category": "self-help"
+        }
+      },
+      "Books": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "isbn": {
+            "type": "number"
+          },
+          "rating": {
+            "type": "number"
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Books"
+        }
+      }
+    }
+  }
+}
