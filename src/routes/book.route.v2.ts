@@ -1,9 +1,42 @@
 import express, { Request, Response } from 'express';
-import books from '../../data.json';
+import dataSourceBooks from '../../data.json';
+import logger from '../utils/logger';
 
 const route = express.Router();
 
+const books = dataSourceBooks.map(item => ({
+  ...item,
+  totalPages: 300,
+}));
+
 route.get('/', (req: Request, res: Response) => {
+  logger.info({
+    name: '[REDACTED]',
+    serviceName: 'hv-session',
+    context: {
+      callbackWaitsForEmptyEventLoop: true,
+      functionVersion: '$LATEST',
+      functionName: 'pss-ae-api-hv-session-qa-upsertAttributes',
+      memoryLimitInMB: '1536',
+      logGroupName: '/aws/lambda/pss-ae-api-hv-session-qa-upsertAttributes',
+      logStreamName: '2024/04/02/[$LATEST]161d2c37b1364c6d880a8fe04cbea115',
+      invokedFunctionArn:
+        'arn:aws:lambda:us-east-1:PHONE_NUMBER:function:pss-ae-api-hv-session-qa-upsertAttributes',
+      awsRequestId: 'd609bec9-8eea-4bed-af00-98598bc65182',
+      invocationCount: 4,
+      teamName: 'Shared',
+      handlerType: 'APIGateway',
+      authorizer: {},
+      correlationId: 'f651400b-4de9-447a-9eb9-e0387f90b881',
+    },
+    hostname: 'IP_ADDRESS',
+    pid: 8,
+    level: 30,
+    msg: "Successfully published event to common event stream {\n  commonEvent: {\n    source: 'hv-session',\n    type: 'HomeVisitAttributesUpserted',\n    subType: 'integration-test-session',\n    partner: 'monitor',\n    tags: [ 'atlas', 'IntegrationTestAttributeType' ],\n    identities: {\n      IntegrationTestAttributeType_0: '273f70b0-8adf-47e6-accPHONE_NUMBERfc',\n      aeSessionId: '3e234bb3-1cf4-489e-81c8-c0b9c7fbed98'\n      correlationId: '1234567'\n    },\n    dateTime: '2024-04-02T20:57:02.528Z',\n    metadata: undefined\n  }\n}",
+    time: '2024-04-02T20:57:02.588Z',
+    src: {},
+    v: 0,
+  });
   res.status(200).json(books);
 });
 
@@ -22,6 +55,7 @@ route.post('/', (req: Request, res: Response) => {
       isbn,
       rating,
       category,
+      totalPages: 300,
     };
 
     books.push(book);

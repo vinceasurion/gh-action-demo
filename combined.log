@@ -1,0 +1,14 @@
+{"level":"info","message":"Request path: /","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/v1/books","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/v1/books","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/v1/books","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/v1/books","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/v1/books","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/v1/books","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/v1/books","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/v1/books","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/v1/books","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/v1/books","service":"llauderes-restapi"}
+{"http_method":"GET","http_status":200,"level":"info","message":"HTTP request","path":"/api/v1/book","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/books","service":"llauderes-restapi"}
+{"level":"info","message":"Request path: /api/books","service":"llauderes-restapi"}
